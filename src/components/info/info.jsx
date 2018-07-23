@@ -2,9 +2,9 @@ import React from 'react';
 
 
 import Side from '../side/side'
-import HomeContent from './homeContent'
+import InfoContent from './InfoContent'
 
-class Home extends React.Component {
+class Info extends React.Component {
 
     render() {
         return (
@@ -12,10 +12,10 @@ class Home extends React.Component {
                 <div className="l_box">
                     <Side />
                 </div>
-                <HomeContent />
+                <InfoContent />
             </article>
         );
     }
 }
 
-export default Home;
+export default Info;

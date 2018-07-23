@@ -1,61 +1,62 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-    Avatar ,
-    Row,
-    Col,
-    Menu,
-    Dropdown,
-    Button
-} from 'antd';
-import './header.css';
+    Link,
+} from 'react-router-dom';
 
-/*import zhCN from 'antd/lib/locale-provider/zh_CN';
-// 由于 antd 组件的默认文案是英文，所以需要修改为中文
-import moment from 'moment';
-import 'moment/locale/zh-cn';
-moment.locale('zh-cn');*/
-const menu = (
-    <Menu>
-        <Menu.Item>
-            <a rel="noopener noreferrer">首页</a>
-        </Menu.Item>
-        <Menu.Item>
-            <a rel="noopener noreferrer">退出登录</a>
-        </Menu.Item>
-    </Menu>
-);
 
-const lin8 = (
-    <Menu>
-        <Menu.Item>
-            <a>中文</a>
-        </Menu.Item>
-        <Menu.Item>
-            <a>English</a>
-        </Menu.Item>
-    </Menu>
-);
+class Header extends React.Component {
+    state = {
+        isNav: 0,
+    }
 
-class Header extends Component {
+    handleNav = (e) => {
+        this.setState({
+            isNav: e
+        })
+    }
+
     render() {
+        const {isNav} = this.state
         return (
-            <div>
-                <Row type="flex" justify="end" className='text-center'>
-                    {/*<Col span={6}>cols</Col>
-                    <Col span={6}>cols</Col>*/}
-                    <Col span={6}>
-                        <Dropdown overlay={lin8} placement="bottomCenter">
-                            <Button>国际化</Button>
-                        </Dropdown>
-                    </Col>
-                    <Col span={3}>
-                        <Dropdown overlay={menu} placement="bottomCenter">
-                             <Avatar shape="square" size="large" icon="user" src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80" />
-                        </Dropdown>
-                    </Col>
-                    <Col span={6}>人称小虹霖</Col>
-                </Row>
-            </div>
+            <header>
+                <div className="logo"><a href="/">小虹霖个人博客</a></div>
+                <nav id="nav">
+                    <ul>
+                        <li>
+                            <Link to="/" id={isNav === 0 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(0)
+                            }}>网站首页</Link>
+                        </li>
+                        <li>
+                            <Link to="/share" id={isNav === 1 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(1)
+                            }}>我的相册</Link>
+                        </li>
+                        <li>
+                            <Link to="/list" id={isNav === 2 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(2)
+                            }}>我的日记</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/about" id={isNav === 3 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(3)
+                            }}>关于我</Link>
+                        </li>
+
+                        <li>
+                            <Link to="/gbook" id={isNav === 4 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(4)
+                            }}>留言</Link>
+                        </li>
+                        <li>
+                            <Link to="/info" id={isNav === 5 ? 'selected' : ''} onClick={() => {
+                                this.handleNav(5)
+                            }}>内容页</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
         );
     }
 }
