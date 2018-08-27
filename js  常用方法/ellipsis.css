@@ -1,0 +1,8 @@
+.ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 1.3em;
+    -webkit-line-clamp: 2;  /*超出部分'...'表示，值是多少  文字就是多少行*/
+}
